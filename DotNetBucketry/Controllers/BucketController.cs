@@ -45,5 +45,21 @@ public class BucketController : ControllerBase
         }
         return Ok(buckets);
     }
+    [HttpDelete]
+    [Route("delete/{bucketName}")]
+    public async Task<ActionResult> DeleteBucket([FromRoute]string bucketName)
+    {
+        if (string.IsNullOrWhiteSpace(bucketName))
+        {
+            return BadRequest();
+        }
+        var bucketExits = await _bucketRepository.DoesBucketExists(bucketName);
+        if (!bucketExits)
+        {
+            return BadRequest("S3 Bucket does not exist to delete");
+        }
+        await _bucketRepository.DeleteBucket(bucketName);
+        return Ok();
+    }
 
 }

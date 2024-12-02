@@ -40,4 +40,13 @@ public class BucketRepository : IBucketRepository
             CreationDate = b.CreationDate
         });
     }
+    
+    public async Task DeleteBucket(string bucketName)
+    {
+        var deleteBucketRequest = new DeleteBucketRequest
+        {
+            BucketName = bucketName
+        };
+        await _s3CLient.DeleteBucketAsync(deleteBucketRequest);
+    }
 }
