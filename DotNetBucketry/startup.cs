@@ -1,4 +1,6 @@
 using Amazon.S3;
+using DotNetBucketry.Core.Interfaces;
+using DotNetBucketry.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Diagnostics;
 using Newtonsoft.Json;
 
@@ -19,8 +21,9 @@ public class Startup
     // This method configures the services for the application
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddAWSService<IAmazonS3>(_configuration.GetAWSOptions());
-        services.AddMvc();
+         services.AddAWSService<IAmazonS3>(_configuration.GetAWSOptions());
+        services.AddSingleton<IBucketRepository, BucketRepository>();
+        
     }
 
     // This method configures the HTTP request pipeline
@@ -30,6 +33,7 @@ public class Startup
        {
            app.UseDeveloperExceptionPage();
        }
+       
        app.UseExceptionHandler(a=>a.Run(async context =>
        {
            var exceptionHandlerPathFeature = context.Features.Get<IExceptionHandlerPathFeature>(); 
@@ -38,6 +42,5 @@ public class Startup
            context.Response.ContentType = "application/json";
            await context.Response.WriteAsync(result);
        }));
-       app.UseMvc();
     }
 }
