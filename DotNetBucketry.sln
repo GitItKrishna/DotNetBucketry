@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBucketry", "DotNetBucketry\DotNetBucketry.csproj", "{87439902-80A2-4F27-8B56-06C6A391C629}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBucketry.Core", "DotNetBucketry.Core\DotNetBucketry.Core.csproj", "{695BC749-E024-482C-A743-A7246D8B9ADE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBucketry.Infrastructure", "DotNetBucketry.Infrastructure\DotNetBucketry.Infrastructure.csproj", "{5F97C3C3-B90D-4895-9629-293713D81D98}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{87439902-80A2-4F27-8B56-06C6A391C629}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87439902-80A2-4F27-8B56-06C6A391C629}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87439902-80A2-4F27-8B56-06C6A391C629}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87439902-80A2-4F27-8B56-06C6A391C629}.Release|Any CPU.Build.0 = Release|Any CPU
+		{695BC749-E024-482C-A743-A7246D8B9ADE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{695BC749-E024-482C-A743-A7246D8B9ADE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{695BC749-E024-482C-A743-A7246D8B9ADE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{695BC749-E024-482C-A743-A7246D8B9ADE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F97C3C3-B90D-4895-9629-293713D81D98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F97C3C3-B90D-4895-9629-293713D81D98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F97C3C3-B90D-4895-9629-293713D81D98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F97C3C3-B90D-4895-9629-293713D81D98}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
