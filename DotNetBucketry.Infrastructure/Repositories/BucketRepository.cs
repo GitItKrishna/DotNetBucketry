@@ -30,4 +30,14 @@ public class BucketRepository : IBucketRepository
             RequestId = response.ResponseMetadata.RequestId
         };
     }
+    
+    public async Task<IEnumerable<ListS3BucketResponse>> ListBuckets()
+    {
+        var response = await _s3CLient.ListBucketsAsync();
+        return response.Buckets.Select(b => new ListS3BucketResponse
+        {
+            BucketName = b.BucketName,
+            CreationDate = b.CreationDate
+        });
+    }
 }

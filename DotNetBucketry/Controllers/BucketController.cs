@@ -35,10 +35,15 @@ public class BucketController : ControllerBase
         return Ok(bucketCreationResult);
     }
     [HttpGet]
-    [Route("get/b1")]
-    public async Task GetBucket()
+    [Route("list")]
+    public async Task<ActionResult<IEnumerable<ListS3BucketResponse>>> ListBuckets()
     {
-        await Task.CompletedTask;
+        var buckets = await _bucketRepository.ListBuckets();
+        if (!buckets.Any() || buckets == null)
+        {
+            return NotFound();
+        }
+        return Ok(buckets);
     }
 
 }

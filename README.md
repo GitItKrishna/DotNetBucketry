@@ -23,5 +23,13 @@ Bucket Operations:
    
     If bucket exists throw the message '**Bucket already exists**'.
    
-    If not exists, create the bucket with the name provided using the '**PutBucketAsync**' method in aws sdk. 
+    If not exists, create the bucket with the name provided using the '**PutBucketAsync**' method in aws sdk.
+    
+   ![img_4.png](img_4.png)
+    
+
+2. **List Buckets** :- 
    
+    List all the buckets in the account using the '**ListBucketsAsync**' method in aws sdk.
+    
+    ![img_5.png](img_5.png)
