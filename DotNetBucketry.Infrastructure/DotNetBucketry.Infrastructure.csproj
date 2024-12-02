@@ -10,4 +10,8 @@
       <ProjectReference Include="..\DotNetBucketry.Core\DotNetBucketry.Core.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="AWSSDK.S3" Version="3.7.408.1" />
+    </ItemGroup>
+
 </Project>

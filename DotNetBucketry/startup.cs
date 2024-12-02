@@ -1,3 +1,5 @@
+using Amazon.S3;
+
 namespace DotNetBucketry;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -6,16 +8,16 @@ using Microsoft.Extensions.DependencyInjection;
 
 public class Startup
 {
+    private readonly IConfiguration _configuration;
     public Startup(IConfiguration configuration)
     {
-        Configuration = configuration;
+        _configuration = configuration;
     }
-
-    public IConfiguration Configuration { get; }
 
     // This method configures the services for the application
     public void ConfigureServices(IServiceCollection services)
     {
+        services.AddAWSService<IAmazonS3>(_configuration.GetAWSOptions());
         services.AddMvc();
     }
 
