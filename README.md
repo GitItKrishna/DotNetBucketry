@@ -85,3 +85,11 @@ Backup and Storage, Application Hosting, Media Hosting, Software Delivery.
     AWS Console Quick Check:-
     
     ![img_13.png](img_13.png)
+
+6. Get All files in the bucket:-
+    
+    Get all the files in the bucket using the '**ListObjectsAsync**' method in aws sdk.
+    
+    ![img_14.png](img_14.png)
+    
+   

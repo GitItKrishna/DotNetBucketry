@@ -24,4 +24,16 @@ public class FilesController : ControllerBase
         var response = await _filesRepository.UploadFiles(bucketName, formFiles);
         return Ok(response);
     }
+    
+    [HttpGet]
+    [Route("list/{bucketName}")]
+    public async Task<ActionResult<IEnumerable<ListFilesResponse>>> ListFiles(string bucketName)
+    {
+        if (string.IsNullOrWhiteSpace(bucketName))
+        {
+            return BadRequest("Bucket name is required");
+        }
+        var response = await _filesRepository.ListFiles(bucketName);
+        return Ok(response);
+    }
 }

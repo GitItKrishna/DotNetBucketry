@@ -46,4 +46,16 @@ public class FilesRepository : IFilesRepository
             PreSignedUrls = response
         };
     }
+    public async Task<IEnumerable<ListFilesResponse>> ListFiles(string bucketName)
+    {
+        var response = await _s3Client.ListObjectsAsync(bucketName);
+        var listObjectsResponse = response.S3Objects.Select(b=> new ListFilesResponse
+        {
+            BucketName = b.BucketName,
+            Key = b.Key,
+            Owner = b.Owner.DisplayName,
+            Size = b.Size
+        });
+        return listObjectsResponse;
+    }
 }
