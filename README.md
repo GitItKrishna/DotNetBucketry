@@ -101,4 +101,20 @@ Backup and Storage, Application Hosting, Media Hosting, Software Delivery.
    
     Desktop File Check:-
      ![img_16.png](img_16.png)
+
+8. **Delete File from the bucket:-**
+        
+     Delete the file from the bucket using the '**DeleteObjectsAsync**' method in aws sdk.
+     
+
+   ![img_17.png](img_17.png)   
+
+   **BEFORE DELETING:-**
+   ![img_18.png](img_18.png)
+     
+   AWS Console Quick Check:-
+   
+   **After Deletion:-**
+
+   ![img_19.png](img_19.png)
    

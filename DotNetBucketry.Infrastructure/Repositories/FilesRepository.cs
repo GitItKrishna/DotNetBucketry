@@ -78,4 +78,21 @@ public class FilesRepository : IFilesRepository
             await fileTransferUtility.DownloadAsync(downloadRequest);
         }
     }
+    public async Task<DeleteFileResponse> DeleteFile(string bucketName, string fileName)
+    {
+        if(string.IsNullOrWhiteSpace(bucketName) || string.IsNullOrWhiteSpace(fileName))
+        {
+            throw new ArgumentNullException("BucketName and fileName are required");
+        }
+        var deleteRequest = new DeleteObjectsRequest
+        {
+            BucketName = bucketName
+        };
+        deleteRequest.AddKey(fileName);
+        var response = await _s3Client.DeleteObjectsAsync(deleteRequest);
+        return new DeleteFileResponse
+        {
+            TotalDeletedFiles = response.DeletedObjects.Count
+        };
+    }
 }   

@@ -47,4 +47,15 @@ public class FilesController : ControllerBase
         await _filesRepository.DownloadFile(bucketName, fileName);
         return Ok();
     }
+    [HttpDelete]
+    [Route("{bucketName}/delete/{fileName}")]
+    public async Task<ActionResult<DeleteFileResponse>> DeleteFile(string bucketName, string fileName)
+    {
+        if (string.IsNullOrWhiteSpace(bucketName) || string.IsNullOrWhiteSpace(fileName))
+        {
+            return BadRequest("Bucket name and file name are required");
+        }
+        var response = await _filesRepository.DeleteFile(bucketName, fileName);
+        return Ok(response);
+    }
 }
