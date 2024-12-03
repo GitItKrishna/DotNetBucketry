@@ -58,4 +58,24 @@ public class FilesRepository : IFilesRepository
         });
         return listObjectsResponse;
     }
-}
+    public async Task DownloadFile(string BucketName, string fileName)
+    {
+        var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+        var downloadPath = Path.Combine(desktopPath, "DownloadedFiles");
+        
+        if(string.IsNullOrEmpty(BucketName) || string.IsNullOrEmpty(fileName))
+        {
+            throw new ArgumentNullException("BucketName and fileName are required");
+        }
+        var downloadRequest = new TransferUtilityDownloadRequest
+        {
+            BucketName = BucketName,
+            Key = fileName,
+            FilePath = Path.Combine(downloadPath, fileName)
+        };
+        using(var fileTransferUtility = new TransferUtility(_s3Client))
+        {
+            await fileTransferUtility.DownloadAsync(downloadRequest);
+        }
+    }
+}   

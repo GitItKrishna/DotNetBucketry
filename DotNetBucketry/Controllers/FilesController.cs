@@ -36,4 +36,15 @@ public class FilesController : ControllerBase
         var response = await _filesRepository.ListFiles(bucketName);
         return Ok(response);
     }
+    [HttpGet]
+    [Route("{bucketName}/download/{fileName}")]
+    public async Task<ActionResult> DownloadFile(string bucketName, string fileName)
+    {
+        if (string.IsNullOrWhiteSpace(bucketName) || string.IsNullOrWhiteSpace(fileName))
+        {
+            return BadRequest("Bucket name and file name are required");
+        }
+        await _filesRepository.DownloadFile(bucketName, fileName);
+        return Ok();
+    }
 }

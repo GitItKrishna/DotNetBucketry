@@ -86,10 +86,19 @@ Backup and Storage, Application Hosting, Media Hosting, Software Delivery.
     
     ![img_13.png](img_13.png)
 
-6. Get All files in the bucket:-
+6. **Get All files in the bucket:-**
     
     Get all the files in the bucket using the '**ListObjectsAsync**' method in aws sdk.
     
     ![img_14.png](img_14.png)
+
+7. **Download File from the bucket:-**
     
+    Download the file from the bucket using the '**DownloadAsync**' method in aws sdk.
+
+    Here in my case, i'm using mac and i have folder named 'DownloadedFiles' in my Desktop.
+    ![img_15.png](img_15.png)
+   
+    Desktop File Check:-
+     ![img_16.png](img_16.png)
    
