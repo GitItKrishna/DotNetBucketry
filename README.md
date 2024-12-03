@@ -55,4 +55,12 @@ Bucket Operations:
     
     AWS Console Quick Check:-
     ![img_8.png](img_8.png)
+
+4. **Upload File**:-
     
+    Upload the file to the bucket using transfer utility UploadAsync Method provided by the aws sdk.
+    
+    ![img_9.png](img_9.png)
+    
+    AWS Console Quick Check:-
+    ![img_10.png](img_10.png)
