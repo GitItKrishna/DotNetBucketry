@@ -15,7 +15,7 @@ public class FilesController : ControllerBase
     }
     [HttpPost]
     [Route("upload/{bucketName}")]
-    public async Task<ActionResult<bool>> UploadFiles(string bucketName, IList<IFormFile> formFiles)
+    public async Task<ActionResult<AddFileResponse>> UploadFiles(string bucketName, IList<IFormFile> formFiles)
     {
         if (string.IsNullOrWhiteSpace(bucketName) || formFiles == null)
         {

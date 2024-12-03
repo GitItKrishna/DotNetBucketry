@@ -5,5 +5,5 @@ namespace DotNetBucketry.Core.Interfaces;
 
 public interface IFilesRepository
 {
-    Task<bool> UploadFiles(string bucketName, IList<IFormFile> formFiles);
+    Task<AddFileResponse> UploadFiles(string bucketName, IList<IFormFile> formFiles);
 }

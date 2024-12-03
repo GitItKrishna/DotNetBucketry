@@ -20,7 +20,7 @@ Backup and Storage, Application Hosting, Media Hosting, Software Delivery.
 2. Download the Access Key and Secret Key.
 3. Configure the AWS CLI with the Access Key and Secret Key.
 
-Bucket Operations:
+**Bucket Operations:**
 1. **Create Bucket**:-
    ```aws s3api create-bucket --bucket my-bucket-name --region us-west-2```
    
@@ -64,3 +64,24 @@ Bucket Operations:
     
     AWS Console Quick Check:-
     ![img_10.png](img_10.png)
+
+
+5. **Uploading Files and Generating Pre-Signed URLS:-**
+    
+    **Pre-Signed URL**:- A pre-signed URL gives you access to the object identified in the URL, provided that the creator of the pre-signed URL has permissions to access that object.
+    
+    **UseCase**:- Share the pre-signed URL with the user to download the file.
+    
+    **Steps**:- 
+    
+    1. Create a pre-signed URL using the '**GetPreSignedURL**' method in aws sdk.
+    2. Share the URL with the user.
+    
+    ![img_11.png](img_11.png)
+   
+    Clicking on each of the Pre-signed URL will generate the get request of the file and then click send to see the file that's uploaded.
+    ![img_12.png](img_12.png)
+    
+    AWS Console Quick Check:-
+    
+    ![img_13.png](img_13.png)
