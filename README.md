@@ -22,48 +22,47 @@ Backup and Storage, Application Hosting, Media Hosting, Software Delivery.
 
 **Bucket Operations:**
 1. **Create Bucket**:-
-   ```aws s3api create-bucket --bucket my-bucket-name --region us-west-2```
-   
+      
     Check if the bucket exists or not by using '**DoesS3BucketExistAsync**' method in aws sdk provided.
    
     If bucket exists throw the message '**Bucket already exists**'.
    
     If not exists, create the bucket with the name provided using the '**PutBucketAsync**' method in aws sdk.
     
-   ![img_4.png](img_4.png)
+   ![img_4.png](images/img_4.png)
    
    AWS Console Quick Check:-
 
-   ![img_3.png](img_3.png)
+   ![img_3.png](images/img_3.png)
     
 
 2. **List Buckets** :- 
    
     List all the buckets in the account using the '**ListBucketsAsync**' method in aws sdk.
     
-    ![img_5.png](img_5.png)
+    ![img_5.png](images/img_5.png)
 
    AWS Console Quick Check:-
    
-   ![img_6.png](img_6.png)
+   ![img_6.png](images/img_6.png)
 
 3. **Delete Bucket**:- 
    
     Delete the bucket using the '**DeleteBucketAsync**' method in aws sdk.
     
-    ![img_7.png](img_7.png)
+    ![img_7.png](images/img_7.png)
     
     AWS Console Quick Check:-
-    ![img_8.png](img_8.png)
+    ![img_8.png](images/img_8.png)
 
 4. **Upload File**:-
     
     Upload the file to the bucket using transfer utility UploadAsync Method provided by the aws sdk.
     
-    ![img_9.png](img_9.png)
+    ![img_9.png](images/img_9.png)
     
     AWS Console Quick Check:-
-    ![img_10.png](img_10.png)
+    ![img_10.png](images/img_10.png)
 
 
 5. **Uploading Files and Generating Pre-Signed URLS:-**
@@ -77,44 +76,44 @@ Backup and Storage, Application Hosting, Media Hosting, Software Delivery.
     1. Create a pre-signed URL using the '**GetPreSignedURL**' method in aws sdk.
     2. Share the URL with the user.
     
-    ![img_11.png](img_11.png)
+    ![img_11.png](images/img_11.png)
    
     Clicking on each of the Pre-signed URL will generate the get request of the file and then click send to see the file that's uploaded.
-    ![img_12.png](img_12.png)
+    ![img_12.png](images/img_12.png)
     
     AWS Console Quick Check:-
     
-    ![img_13.png](img_13.png)
+    ![img_13.png](images/img_13.png)
 
 6. **Get All files in the bucket:-**
     
     Get all the files in the bucket using the '**ListObjectsAsync**' method in aws sdk.
     
-    ![img_14.png](img_14.png)
+    ![img_14.png](images/img_14.png)
 
 7. **Download File from the bucket:-**
     
     Download the file from the bucket using the '**DownloadAsync**' method in aws sdk.
 
     Here in my case, i'm using mac and i have folder named 'DownloadedFiles' in my Desktop.
-    ![img_15.png](img_15.png)
+    ![img_15.png](images/img_15.png)
    
     Desktop File Check:-
-     ![img_16.png](img_16.png)
+     ![img_16.png](images/img_16.png)
 
 8. **Delete File from the bucket:-**
         
      Delete the file from the bucket using the '**DeleteObjectsAsync**' method in aws sdk.
      
 
-   ![img_17.png](img_17.png)   
+   ![img_17.png](images/img_17.png)   
 
    **BEFORE DELETING:-**
-   ![img_18.png](img_18.png)
+   ![img_18.png](images/img_18.png)
      
    AWS Console Quick Check:-
    
    **After Deletion:-**
 
-   ![img_19.png](img_19.png)
+   ![img_19.png](images/img_19.png)
    
