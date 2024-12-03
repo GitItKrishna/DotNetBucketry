@@ -3,11 +3,26 @@ using DotNetBucketry.Core.Interfaces;
 using DotNetBucketry.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+
 builder.Services.AddControllers();
 builder.Services.AddAWSService<IAmazonS3>(builder.Configuration.GetAWSOptions());
 builder.Services.AddScoped<IBucketRepository, BucketRepository>();
+builder.Services.AddScoped<IFilesRepository, FilesRepository>();
 
 var app = builder.Build();
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "DotNetBucketry API V1");
+        c.RoutePrefix = string.Empty; // Set Swagger UI at the app's root
+    });
+}
 app.UseRouting();
 app.UseEndpoints(endpoints =>
 {

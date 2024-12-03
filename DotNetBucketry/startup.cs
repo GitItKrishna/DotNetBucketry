@@ -21,8 +21,8 @@ public class Startup
     // This method configures the services for the application
     public void ConfigureServices(IServiceCollection services)
     {
-         services.AddAWSService<IAmazonS3>(_configuration.GetAWSOptions());
-        services.AddSingleton<IBucketRepository, BucketRepository>();
+         //services.AddAWSService<IAmazonS3>(_configuration.GetAWSOptions());
+        //services.AddSingleton<IBucketRepository, BucketRepository>();
         
     }
 
