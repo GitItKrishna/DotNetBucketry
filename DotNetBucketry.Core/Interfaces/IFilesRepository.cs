@@ -9,4 +9,5 @@ public interface IFilesRepository
     Task<IEnumerable<ListFilesResponse>> ListFiles(string bucketName);
     Task DownloadFile(string BucketName, string fileName);
     Task<DeleteFileResponse> DeleteFile(string bucketName, string fileName);
+    Task UploadFilesLowLevelAPI(string bucketName, IFormFile formFiles);
 }

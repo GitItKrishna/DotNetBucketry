@@ -1,6 +1,8 @@
 using DotNetBucketry.Core.Communication.Files;
 using DotNetBucketry.Core.Interfaces;
 using System.Collections;
+using Amazon;
+using Amazon.Runtime;
 using Amazon.S3;
 using Amazon.S3.Model;
 using Amazon.S3.Transfer;
@@ -10,10 +12,84 @@ namespace DotNetBucketry.Infrastructure.Repositories;
 
 public class FilesRepository : IFilesRepository
 {
-    private readonly IAmazonS3 _s3Client;
+    private IAmazonS3 _s3Client;
     public FilesRepository(IAmazonS3 s3Client)
     {
         _s3Client = s3Client;
+    }
+    public async Task UploadFilesLowLevelAPI(string bucketName, IFormFile formFile)
+    {
+        _s3Client = new AmazonS3Client(RegionEndpoint.USEast1);
+        List<UploadPartResponse> uploadResponses = new List<UploadPartResponse>();
+        InitiateMultipartUploadRequest initiateRequest = new InitiateMultipartUploadRequest
+        {
+            BucketName = bucketName,
+            Key = formFile.FileName
+        };
+        // Initiate the upload.
+        InitiateMultipartUploadResponse initResponse =
+            await _s3Client.InitiateMultipartUploadAsync(initiateRequest);
+        // Upload parts.
+        long contentLength = formFile.Length;
+        long partSize = 5 * (long)Math.Pow(2, 20); // 5 MB
+         try 
+         {
+                Console.WriteLine("Uploading parts");
+        
+                long filePosition = 0;
+                for (int i = 1; filePosition < contentLength; i++)
+                {
+                    UploadPartRequest uploadRequest = new UploadPartRequest
+                        {
+                            BucketName = bucketName,
+                            Key = formFile.FileName,
+                            UploadId = initResponse.UploadId,
+                            PartNumber = i,
+                            PartSize = partSize,
+                            FilePosition = filePosition
+                        };
+
+                    // Track upload progress.
+                    uploadRequest.StreamTransferProgress +=
+                        new EventHandler<StreamTransferProgressArgs>(UploadPartProgressEventCallback);
+
+                    // Upload a part and add the response to our list.
+                    uploadResponses.Add(await _s3Client.UploadPartAsync(uploadRequest));
+
+                    filePosition += partSize;
+                }
+
+                // Setup to complete the upload.
+                CompleteMultipartUploadRequest completeRequest = new CompleteMultipartUploadRequest
+                    {
+                        BucketName = bucketName,
+                        Key = formFile.FileName,
+                        UploadId = initResponse.UploadId
+                     };
+                completeRequest.AddPartETags(uploadResponses);
+
+                // Complete the upload.
+                CompleteMultipartUploadResponse completeUploadResponse =
+                    await _s3Client.CompleteMultipartUploadAsync(completeRequest); 
+         }
+         catch (Exception exception)
+         {
+                Console.WriteLine("An AmazonS3Exception was thrown: { 0}", exception.Message);
+
+                // Abort the upload.
+                AbortMultipartUploadRequest abortMPURequest = new AbortMultipartUploadRequest
+                {
+                    BucketName = bucketName,
+                    Key = formFile.FileName,
+                    UploadId = initResponse.UploadId
+                };
+               await _s3Client.AbortMultipartUploadAsync(abortMPURequest);
+         }
+    }
+    private static void UploadPartProgressEventCallback(object sender, StreamTransferProgressArgs e)
+    {
+        // Process event. 
+        Console.WriteLine("{0}/{1}", e.TransferredBytes, e.TotalBytes);
     }
     public async Task<AddFileResponse> UploadFiles(string bucketName, IList<IFormFile> formFiles)
     {

@@ -14,6 +14,18 @@ public class FilesController : ControllerBase
         _filesRepository = filesRepository;
     }
     [HttpPost]
+    [Route("upload-low/{bucketName}")]
+    public async Task UploadFile(string bucketName, IFormFile formFile)
+    {
+        if (string.IsNullOrWhiteSpace(bucketName) || formFile == null)
+        {
+            BadRequest("Bucket name and file are required");
+        }
+        await _filesRepository.UploadFilesLowLevelAPI(bucketName,  formFile);
+    }
+    
+    
+    [HttpPost]
     [Route("upload/{bucketName}")]
     public async Task<ActionResult<AddFileResponse>> UploadFiles(string bucketName, IList<IFormFile> formFiles)
     {
