@@ -1,3 +1,4 @@
+using Amazon.S3.Model;
 using DotNetBucketry.Core.Communication.Files;
 using Microsoft.AspNetCore.Http;
 
@@ -10,4 +11,6 @@ public interface IFilesRepository
     Task DownloadFile(string BucketName, string fileName);
     Task<DeleteFileResponse> DeleteFile(string bucketName, string fileName);
     Task UploadFilesLowLevelAPI(string bucketName, IFormFile formFiles);
+    Task<GetObjectResponse> GetFileForDownloadAsync(string bucketName, string bucketKey, CancellationToken cancellationToken);
+    
 }

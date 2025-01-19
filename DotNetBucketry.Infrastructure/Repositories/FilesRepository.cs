@@ -171,4 +171,22 @@ public class FilesRepository : IFilesRepository
             TotalDeletedFiles = response.DeletedObjects.Count
         };
     }
+    public async Task<GetObjectResponse> GetFileForDownloadAsync(string bucketName, string bucketKey, CancellationToken cancellationToken)
+    {
+        try
+        {
+            var request = new GetObjectRequest
+            {
+                BucketName = bucketName,
+                Key = bucketKey
+            };
+            var response = await _s3Client.GetObjectAsync(request, cancellationToken);
+            return response;
+        }
+        catch (AmazonS3Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            return new GetObjectResponse();
+        }
+    }
 }   

@@ -1,3 +1,4 @@
+using System.Net.Mime;
 using DotNetBucketry.Core.Communication.Files;
 using DotNetBucketry.Core.Interfaces;
 
@@ -69,5 +70,37 @@ public class FilesController : ControllerBase
         }
         var response = await _filesRepository.DeleteFile(bucketName, fileName);
         return Ok(response);
+    }
+    [HttpGet]
+    [Route("{bucketName}/download-low/{fileName}")]
+    public async Task<ActionResult> DownloadFileLowLeveAPI(string bucketName, string fileName)
+    {
+        if (string.IsNullOrWhiteSpace(bucketName) || string.IsNullOrWhiteSpace(fileName))
+        {
+            return BadRequest("Bucket name and file name are required");
+        }   
+        var getObjectResponse =  await _filesRepository.GetFileForDownloadAsync(bucketName, fileName, new CancellationToken());
+       
+        if (getObjectResponse.ResponseStream == null)
+        {
+            return new NotFoundResult();
+        }
+        var memoryStream = new MemoryStream();
+        await getObjectResponse.ResponseStream.CopyToAsync(memoryStream);
+        if (memoryStream.Length == 0)
+        {
+            return new NotFoundResult();
+        }
+
+        memoryStream.Position = 0; // Reset the position to the beginning of the stream
+
+        var contentType = getObjectResponse.Headers.Keys.Contains("Content-Type")
+            ? getObjectResponse.Headers["Content-Type"]
+            : MediaTypeNames.Application.Octet;
+
+        return new FileStreamResult(getObjectResponse.ResponseStream, contentType)
+        {
+            FileDownloadName = fileName
+        };
     }
 }
