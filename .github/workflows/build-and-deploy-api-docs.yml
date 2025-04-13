@@ -1,0 +1,38 @@
+name: Build and Deploy API Docs
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0
+
+    - name: Install Redoc CLI
+      run: npm install -g redoc-cli
+
+    - name: Build and Run API
+      run: |
+        dotnet build
+        dotnet run --no-build &
+        sleep 10
+        curl http://localhost:5000/swagger/v1/swagger.json --output swagger.json
+
+    - name: Generate Static HTML Documentation
+      run: redoc-cli bundle swagger.json -o redoc-static.html
+
+    - name: Upload Documentation Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: api-docs
+        path: redoc-static.html
