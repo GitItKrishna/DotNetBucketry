@@ -33,13 +33,13 @@ jobs:
           swagger tofile --output swagger.json ./DotNetBucketry/bin/Release/net8.0/DotNetBucketry.dll v1
 
     - name: Install Redoc CLI
-      run: npm install -g redoc-cli
+      run: npm install -g redocly
       
     - name: Generate Static HTML Documentation
-      run: redoc-cli bundle swagger.json -o redoc-static.html
+      run: redocly build-docs swagger.json -o api-docs.html
 
     - name: Upload Documentation Artifact
       uses: actions/upload-pages-artifact@v3
       with:
         name: api-docs
-        path: ./redoc-static.html
+        path: api-docs.html
