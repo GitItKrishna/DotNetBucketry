@@ -72,4 +72,4 @@ jobs:
 
     - name: Deploy to AWS S3
       run: |
-        aws s3 cp api-docs.html s3://mydemobucketkrishna/api-docs.html --acl public-read
+        aws s3 cp api-docs.html s3://mydemobucketkrishna/api-docs.html
