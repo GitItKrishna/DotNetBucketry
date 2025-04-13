@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DotNetBucketry.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7facabb674b92cbcdbba29b2e6f4689b3a007126")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+60920dc4864de7c977b23a2c5f75d252c4055a18")]
 [assembly: System.Reflection.AssemblyProductAttribute("DotNetBucketry.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DotNetBucketry.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
