@@ -81,7 +81,7 @@ jobs:
         CONFLUENCE_BASE_URL: ${{ secrets.CONFLUENCE_BASE_URL }}
         CONFLUENCE_PAGE_ID: ${{ secrets.CONFLUENCE_PAGE_ID }}
       run: |
-        CONTENT=$(cat api-docs.html | base64)
+        CONTENT=$(cat api-docs.html | jq -Rs .)
         curl -X PUT \
           -u "$CONFLUENCE_USERNAME:$CONFLUENCE_API_TOKEN" \
           -H "Content-Type: application/json" \
