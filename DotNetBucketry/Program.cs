@@ -4,7 +4,6 @@ using DotNetBucketry.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 builder.WebHost.ConfigureKestrel(options=>options.Limits.MaxRequestBodySize = null);
 builder.Services.AddControllers();
