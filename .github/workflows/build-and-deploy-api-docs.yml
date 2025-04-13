@@ -30,7 +30,7 @@ jobs:
       run: |
           dotnet tool install -g swashbuckle.aspnetcore.cli
           export PATH="$PATH:/home/runner/.dotnet/tools"
-          swagger tofile --output swagger.json ./DotNetBucketry/DotNetBucketry/DotNetBucketry.Core/bin/Debug/net8.0/DotNetBucketry.Core.dll v1
+          swagger tofile --output swagger.json ./DotNetBucketry/DotNetBucketry/DotNetBucketry.Core/bin/Release/net8.0/DotNetBucketry.Core.dll v1
 
     - name: Install Redoc CLI
       run: npm install -g redoc-cli
