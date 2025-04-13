@@ -1,4 +1,5 @@
 using Amazon.S3;
+using DotNetBucketry;
 using DotNetBucketry.Core.Interfaces;
 using DotNetBucketry.Infrastructure.Repositories;
 
@@ -7,7 +8,16 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.WebHost.ConfigureKestrel(options=>options.Limits.MaxRequestBodySize = null);
 builder.Services.AddControllers();
-// builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    // add a custom operation filter which sets default values
+    options.OperationFilter<SwaggerDefaultValues>();
+    var fileName = typeof(Program).Assembly.GetName().Name + ".xml";
+    var filePath = Path.Combine(AppContext.BaseDirectory, fileName);
+
+    // integrate xml comments
+    options.IncludeXmlComments(filePath);
+});
 builder.Services.AddAWSService<IAmazonS3>(builder.Configuration.GetAWSOptions());
 builder.Services.AddScoped<IBucketRepository, BucketRepository>();
 builder.Services.AddScoped<IFilesRepository, FilesRepository>();

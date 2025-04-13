@@ -19,18 +19,18 @@ public class Startup
     }
 
     // This method configures the services for the application
-    public void ConfigureServices(WebApplicationBuilder builder, Serilog.ILogger logger)
+    public void ConfigureServices(IServiceCollection services, WebApplicationBuilder builder, Serilog.ILogger logger)
     {
-        builder.Services.AddSwaggerGen(options =>
-        {
-            // add a custom operation filter which sets default values
-            options.OperationFilter<SwaggerDefaultValues>();
-            var fileName = typeof(Program).Assembly.GetName().Name + ".xml";
-            var filePath = Path.Combine(AppContext.BaseDirectory, fileName);
-
-            // integrate xml comments
-            options.IncludeXmlComments(filePath);
-        });
+        // builder.Services.AddSwaggerGen(options =>
+        // {
+        //     // add a custom operation filter which sets default values
+        //     options.OperationFilter<SwaggerDefaultValues>();
+        //     var fileName = typeof(Program).Assembly.GetName().Name + ".xml";
+        //     var filePath = Path.Combine(AppContext.BaseDirectory, fileName);
+        //
+        //     // integrate xml comments
+        //     options.IncludeXmlComments(filePath);
+        // });
     }
 
     // This method configures the HTTP request pipeline
