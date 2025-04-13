@@ -19,6 +19,10 @@ public class FilesRepository : IFilesRepository
     }
     public async Task UploadFilesLowLevelAPI(string bucketName, IFormFile formFile)
     {
+        if (formFile == null)
+        {
+            throw new ArgumentNullException(nameof(formFile), "The formFile parameter cannot be null.");
+        }
         _s3Client = new AmazonS3Client(RegionEndpoint.USEast1);
         List<UploadPartResponse> uploadResponses = new List<UploadPartResponse>();
         InitiateMultipartUploadRequest initiateRequest = new InitiateMultipartUploadRequest

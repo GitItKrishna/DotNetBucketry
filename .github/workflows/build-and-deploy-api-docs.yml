@@ -18,15 +18,19 @@ jobs:
       with:
         dotnet-version: 8.0
 
-    - name: Install Redoc CLI
-      run: npm install -g redoc-cli
-
-    - name: Build and Run API
+    - name: Build  API
       run: |
         dotnet build ./DotNetBucketry.Core/DotNetBucketry.Core.csproj &
         sleep 10
-        curl http://localhost:5000/swagger/v1/swagger.json --output swagger.json
 
+    - name: Generate Swagger JSON
+      run: |
+          dotnet tool install -g swashbuckle.aspnetcore.cli
+          swagger tofile --output swagger.json bin/Release/net8.0/DotNetBucketry.dll v1
+
+    - name: Install Redoc CLI
+      run: npm install -g redoc-cli
+      
     - name: Generate Static HTML Documentation
       run: redoc-cli bundle swagger.json -o redoc-static.html
 
