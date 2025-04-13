@@ -73,3 +73,29 @@ jobs:
     - name: Deploy to AWS S3
       run: |
         aws s3 cp api-docs.html s3://mydemobucketkrishna/api-docs.html
+        
+    - name: Upload to Confluence Page
+      env:
+        CONFLUENCE_USERNAME: ${{ secrets.CONFLUENCE_USERNAME }}
+        CONFLUENCE_API_TOKEN: ${{ secrets.CONFLUENCE_API_TOKEN }}
+        CONFLUENCE_BASE_URL: ${{ secrets.CONFLUENCE_BASE_URL }}
+        CONFLUENCE_PAGE_ID: ${{ secrets.CONFLUENCE_PAGE_ID }}
+      run: |
+        CONTENT=$(cat api-docs.html | base64)
+        curl -X PUT \
+          -u "$CONFLUENCE_USERNAME:$CONFLUENCE_API_TOKEN" \
+          -H "Content-Type: application/json" \
+          -d '{
+            "version": {
+              "number": 2
+            },
+            "title": "API Documentation",
+            "type": "page",
+            "body": {
+              "storage": {
+                "value": "<ac:structured-macro ac:name=\"html\"><ac:plain-text-body><![CDATA['"$CONTENT"']]></ac:plain-text-body></ac:structured-macro>",
+                "representation": "storage"
+              }
+            }
+          }' \
+          "$CONFLUENCE_BASE_URL/rest/api/content/$CONFLUENCE_PAGE_ID"
