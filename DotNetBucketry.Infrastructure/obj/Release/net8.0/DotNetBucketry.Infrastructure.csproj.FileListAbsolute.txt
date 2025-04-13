@@ -1,0 +1,16 @@
+/home/runner/work/DotNetBucketry/DotNetBucketry/DotNetBucketry.Infrastructure/bin/Release/net8.0/DotNetBucketry.Infrastructure.deps.json
+/home/runner/work/DotNetBucketry/DotNetBucketry/DotNetBucketry.Infrastructure/bin/Release/net8.0/DotNetBucketry.Infrastructure.dll
+/home/runner/work/DotNetBucketry/DotNetBucketry/DotNetBucketry.Infrastructure/bin/Release/net8.0/DotNetBucketry.Infrastructure.pdb
+/home/runner/work/DotNetBucketry/DotNetBucketry/DotNetBucketry.Infrastructure/bin/Release/net8.0/DotNetBucketry.Core.dll
+/home/runner/work/DotNetBucketry/DotNetBucketry/DotNetBucketry.Infrastructure/bin/Release/net8.0/DotNetBucketry.Core.pdb
+/home/runner/work/DotNetBucketry/DotNetBucketry/DotNetBucketry.Infrastructure/obj/Release/net8.0/DotNetBucketry.Infrastructure.csproj.AssemblyReference.cache
+/home/runner/work/DotNetBucketry/DotNetBucketry/DotNetBucketry.Infrastructure/obj/Release/net8.0/DotNetBucketry.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/home/runner/work/DotNetBucketry/DotNetBucketry/DotNetBucketry.Infrastructure/obj/Release/net8.0/DotNetBucketry.Infrastructure.AssemblyInfoInputs.cache
+/home/runner/work/DotNetBucketry/DotNetBucketry/DotNetBucketry.Infrastructure/obj/Release/net8.0/DotNetBucketry.Infrastructure.AssemblyInfo.cs
+/home/runner/work/DotNetBucketry/DotNetBucketry/DotNetBucketry.Infrastructure/obj/Release/net8.0/DotNetBucketry.Infrastructure.csproj.CoreCompileInputs.cache
+/home/runner/work/DotNetBucketry/DotNetBucketry/DotNetBucketry.Infrastructure/obj/Release/net8.0/DotNetBucketry.Infrastructure.sourcelink.json
+/home/runner/work/DotNetBucketry/DotNetBucketry/DotNetBucketry.Infrastructure/obj/Release/net8.0/DotNetBu.9D3B8350.Up2Date
+/home/runner/work/DotNetBucketry/DotNetBucketry/DotNetBucketry.Infrastructure/obj/Release/net8.0/DotNetBucketry.Infrastructure.dll
+/home/runner/work/DotNetBucketry/DotNetBucketry/DotNetBucketry.Infrastructure/obj/Release/net8.0/refint/DotNetBucketry.Infrastructure.dll
+/home/runner/work/DotNetBucketry/DotNetBucketry/DotNetBucketry.Infrastructure/obj/Release/net8.0/DotNetBucketry.Infrastructure.pdb
+/home/runner/work/DotNetBucketry/DotNetBucketry/DotNetBucketry.Infrastructure/obj/Release/net8.0/ref/DotNetBucketry.Infrastructure.dll
