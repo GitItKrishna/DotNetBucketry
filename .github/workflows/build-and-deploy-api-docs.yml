@@ -33,7 +33,7 @@ jobs:
           swagger tofile --output swagger.json ./DotNetBucketry/bin/Release/net8.0/DotNetBucketry.dll v1
 
     - name: Install Redoc CLI
-      run: npm install -g redocly
+      run: npm install -g redocly/cli
       
     - name: Generate Static HTML Documentation
       run: redocly build-docs swagger.json -o api-docs.html
