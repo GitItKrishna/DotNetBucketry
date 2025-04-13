@@ -1,6 +1,6 @@
-**DotNetBucketry**
+**DotNetBucketry Repo**
 
-This is a Sample AWS S3 Repo for s3 operations. (This is done based on the clean architecture from ardalis. https://github.com/ardalis/CleanArchitecture)
+This is a Sample AWS S3 Repo for s3 operations. (This is done based on the clean architecture from ardalis. https://github.com/ardalis/CleanArchitecture).
 
 **S3 UseCases:-**
 
