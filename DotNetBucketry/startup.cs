@@ -3,7 +3,7 @@ using DotNetBucketry.Core.Interfaces;
 using DotNetBucketry.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Diagnostics;
 using Newtonsoft.Json;
-
+using Serilog;
 namespace DotNetBucketry;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -19,11 +19,18 @@ public class Startup
     }
 
     // This method configures the services for the application
-    public void ConfigureServices(IServiceCollection services)
+    public void ConfigureServices(WebApplicationBuilder builder, Serilog.ILogger logger)
     {
-         //services.AddAWSService<IAmazonS3>(_configuration.GetAWSOptions());
-        //services.AddSingleton<IBucketRepository, BucketRepository>();
-        
+        builder.Services.AddSwaggerGen(options =>
+        {
+            // add a custom operation filter which sets default values
+            options.OperationFilter<SwaggerDefaultValues>();
+            var fileName = typeof(Program).Assembly.GetName().Name + ".xml";
+            var filePath = Path.Combine(AppContext.BaseDirectory, fileName);
+
+            // integrate xml comments
+            options.IncludeXmlComments(filePath);
+        });
     }
 
     // This method configures the HTTP request pipeline
