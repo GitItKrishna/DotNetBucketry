@@ -8,6 +8,7 @@ builder.Services.AddSwaggerGen();
 
 builder.WebHost.ConfigureKestrel(options=>options.Limits.MaxRequestBodySize = null);
 builder.Services.AddControllers();
+builder.Services.AddSwaggerGen();
 builder.Services.AddAWSService<IAmazonS3>(builder.Configuration.GetAWSOptions());
 builder.Services.AddScoped<IBucketRepository, BucketRepository>();
 builder.Services.AddScoped<IFilesRepository, FilesRepository>();
