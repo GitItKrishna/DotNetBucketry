@@ -24,7 +24,7 @@ jobs:
     - name: Build  API
       run: |
         dotnet clean ./DotNetBucketry.Core/DotNetBucketry.Core.csproj
-        dotnet build ./DotNetBucketry.Core/DotNetBucketry.Core.csproj --configuration Release
+        dotnet build ./DotNetBucketry.Core/DotNetBucketry.Core.csproj
 
     - name: Generate Swagger JSON
       run: |
