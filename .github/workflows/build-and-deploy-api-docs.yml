@@ -23,8 +23,8 @@ jobs:
 
     - name: Build and Run API
       run: |
-        dotnet build
-        dotnet run --no-build &
+        dotnet build ./DotNetBucketry.Core/DotNetBucketry.Core.csproj
+        dotnet run --no-build --project ./DotNetBucketry.Core/DotNetBucketry.Core.csproj &
         sleep 10
         curl http://localhost:5000/swagger/v1/swagger.json --output swagger.json
 
