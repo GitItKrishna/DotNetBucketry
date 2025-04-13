@@ -49,9 +49,6 @@ jobs:
         name: api-docs
         path: ./api-docs.html
         
-        
-    - name: Debug Deployment Directory
-      run: ls -la ./api-docs.html
 
     - name: Debug Generated Files
       run: ls -la
