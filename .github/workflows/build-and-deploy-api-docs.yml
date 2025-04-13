@@ -93,7 +93,7 @@ jobs:
             "type": "page",
             "body": {
               "storage": {
-                "value": "<ac:structured-macro ac:name=\"html\"><ac:plain-text-body><![CDATA['"$CONTENT"']]></ac:plain-text-body></ac:structured-macro>",
+                "value": '"$CONTENT"',
                 "representation": "storage"
               }
             }
