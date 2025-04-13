@@ -23,14 +23,14 @@ jobs:
 
     - name: Build  API
       run: |
-        dotnet clean ./DotNetBucketry.Core/DotNetBucketry.Core.csproj
-        dotnet build ./DotNetBucketry.Core/DotNetBucketry.Core.csproj --configuration Release
+        dotnet clean ./DotNetBucketry/DotNetBucketry.csproj
+        dotnet build ./DotNetBucketry/DotNetBucketry.csproj --configuration Release
 
     - name: Generate Swagger JSON
       run: |
           dotnet tool install -g swashbuckle.aspnetcore.cli
           export PATH="$PATH:/home/runner/.dotnet/tools"
-          swagger tofile --output swagger.json ./DotNetBucketry/bin/Release/net8.0/ v1
+          swagger tofile --output swagger.json ./DotNetBucketry/bin/Release/net8.0/DotNetBucketry.dll v1
 
     - name: Install Redoc CLI
       run: npm install -g redoc-cli
