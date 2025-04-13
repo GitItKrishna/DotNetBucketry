@@ -39,7 +39,7 @@ jobs:
       run: redocly build-docs swagger.json -o api-docs.html
 
     - name: Upload Documentation Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-pages-artifact@v3
       with:
         name: api-docs
-        path: api-docs.html
+        path: ./api-docs.html
