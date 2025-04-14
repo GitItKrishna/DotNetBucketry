@@ -110,3 +110,16 @@ jobs:
           -H "X-Atlassian-Token: no-check" \
           -F "file=@api-docs.html" \
           "$CONFLUENCE_BASE_URL/rest/api/content/$CONFLUENCE_PAGE_ID/child/attachment"
+
+    - name: Upload to Azure Blob Storage
+      env:
+          AZURE_STORAGE_ACCOUNT: ${{ secrets.AZURE_STORAGE_ACCOUNT }}
+          AZURE_STORAGE_KEY: ${{ secrets.AZURE_STORAGE_KEY }}
+          AZURE_CONTAINER_NAME: ${{ secrets.AZURE_CONTAINER_NAME }}
+      run: |
+          az storage blob upload \
+            --account-name $AZURE_STORAGE_ACCOUNT \
+            --account-key $AZURE_STORAGE_KEY \
+            --container-name $AZURE_CONTAINER_NAME \
+            --file api-docs.html \
+            --name api-docs.html
