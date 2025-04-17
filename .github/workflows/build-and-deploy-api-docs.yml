@@ -121,4 +121,5 @@ jobs:
             --account-key $AZURE_STORAGE_KEY \
             --container-name $AZURE_CONTAINER_NAME \
             --file api-docs.html \
-            --name api-docs.html
+            --name api-docs.html \
+            --overwrite
