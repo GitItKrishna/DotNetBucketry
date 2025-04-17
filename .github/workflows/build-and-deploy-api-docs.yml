@@ -97,6 +97,7 @@ jobs:
 #          }' \
 #          "$CONFLUENCE_BASE_URL/rest/api/content/$CONFLUENCE_PAGE_ID"
 
+
     - name: Upload to Confluence as Attachment
       env:
         CONFLUENCE_USERNAME: ${{ secrets.CONFLUENCE_USERNAME }}
